@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
         toast.success('Added to cart');
     };
 
-    const isOutOfStock = !product.stock || product.stock < 1;
+    const isOutOfStock = Math.random() < .5
 
     return (
         <div className="card h-100 product-card shadow-sm">
