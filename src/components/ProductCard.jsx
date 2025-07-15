@@ -9,8 +9,6 @@ const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
 
     const handleAddToCart = () => {
-        if (!product.stock || product.stock < 1) return;
-
         const itemToAdd = {
             ...product,
             variant: selectedVariant
@@ -19,7 +17,8 @@ const ProductCard = ({ product }) => {
         toast.success('Added to cart');
     };
 
-    const isOutOfStock = !product.stock || product.stock < 1;
+    // For fakestoreapi products, we'll assume they're in stock unless explicitly set to out of stock
+    const isOutOfStock = product.stock === 0;
 
     return (
         <div className="card h-100 product-card shadow-sm">
